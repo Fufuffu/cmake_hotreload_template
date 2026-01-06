@@ -40,12 +40,8 @@ if(NOT raylib_FOUND)
         GIT_REPOSITORY https://github.com/raysan5/raylib.git
         GIT_TAG 5.5
     )
-    FetchContent_GetProperties(raylib)
-    if(NOT raylib_POPULATED)
-        FetchContent_Populate(raylib)
-        set(BUILD_SHARED_LIBS ${USE_SHARED_RAYLIB})
-        add_subdirectory(${raylib_SOURCE_DIR} ${raylib_BINARY_DIR})
-    endif()
+    set(BUILD_SHARED_LIBS ${USE_SHARED_RAYLIB})
+    FetchContent_MakeAvailable(raylib)
 endif()
 
 target_link_libraries(gamelib PUBLIC raylib)
